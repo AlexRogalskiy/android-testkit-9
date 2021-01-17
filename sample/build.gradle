@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def mini_api = 16
+def compile_api = 30
+def target_api = 30
+def version_code = 112
+def version_name = '1.1.2'
+
+android {
+    compileSdkVersion compile_api
+
+    defaultConfig {
+        applicationId "com.github.dfmabbas.sample"
+        minSdkVersion mini_api
+        targetSdkVersion target_api
+        versionCode version_code
+        versionName version_name
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //fab animator library
+    implementation project(':library')
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21"
+    //support
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0-alpha2'
+}
